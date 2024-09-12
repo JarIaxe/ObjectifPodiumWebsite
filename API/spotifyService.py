@@ -1,4 +1,5 @@
 import base64
+import json
 from config import load_config
 import requests
 
@@ -21,10 +22,30 @@ def get_access_token(config):
     response = requests.post(url, headers=headers, data=data)
 
     if response.status_code == 200:
-        token = response.json().get("access_token")
+        token = 'Bearer ' + response.json().get("access_token")
+
+
+def check_token_expired():
+    response = requests.post('url')
+
+    if response.status_code == 401:
+        get_access_token(config)
+
+def get_song(title):
+    endpoint = "https://api.spotify.com/v1/search"
+
+    search_request = f"q={title}&type=track&market=FR&limit=5&offset=0"
+
+    headers = {"Authorization":token}
+
+    response = requests.get(endpoint+"?"+search_request, headers=headers)
+    if response.status_code == 200:
+        data = response.json().get("tracks").get("items")
+        print(data)
+
 
 if __name__ == "__main__":
+    global config
     config = load_config("database.ini", "spotify")
     get_access_token(config)
-
-    print(token)
+    get_song("Yellow")
