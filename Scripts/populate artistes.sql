@@ -2,16 +2,17 @@ INSERT INTO public.artist(
 	id, name)
 	VALUES 
 	('1l7ZsJRRS8wlW3WfJfPfNS', 'Christina Aguilera'),
-	('1tqZaCwM57UFKjWoYwMLrw', 'The Cardigans')
-	'6ogn9necmbUdCppmNnGOdi','Alanis Morissette')
+	('1tqZaCwM57UFKjWoYwMLrw', 'The Cardigans'),
+	('6ogn9necmbUdCppmNnGOdi','Alanis Morissette'),
 	('7Ey4PD4MYsKc5I2dolUwbH','Aerosmith'),
 	('3y24n3XhZ96wgwRXjvS17T','Coolio'),
+	('2LhsePRtgCo4THVKULQBL7','L.V.'),
 	('1HY2Jd0NmPuamShAr6KMms', 'Lady Gaga'),
 	('1vCWHaC5f2uS3yhpwWbIA6','Avicii'),
 	('4hKkEHkaqCsyxNxXEsszVH','John Travolta'),
 	('4BoRxUdrcgbbq1rxJvvhg9','Olivia Newton-John'),
 	('2CzPCLry0VHxB4JNva2du6','Bellini'),
-	('7t0rwkOPGlDPEhaOcVtOt9','The Cramberries'),
+	('7t0rwkOPGlDPEhaOcVtOt9','The Cranberries'),
 	('1T0wRBO0CK0vK8ouUMqEl5','Tom Jones'),
 	('5N6EzjkOoyABhNZJggeXi6','Mousse T'),
 	('6TOGbRYHQizlf3adIyugol','Hugues Aufray'),
@@ -31,6 +32,7 @@ INSERT INTO public.artist(
 	('4gzpq5DPGxSnKTe4SA8HAU','Coldplay'),
 	('6OWapcJm9xd55ci9CYbAuT','Los Lobos'),
 	('6L8y2rKomt32RmT4wfwZS7','Jungeli'),
+	('2z2TRvloJt4EfUNQp9rHAi','Alonzo'),
 	('329e4yvIujISKGKz1BZZbO','Farruko'),
 	('4oJ3WVkGXRBtRC0YaqMKxU','Niagara'),
 	('5rSXSAkZ67PYJSvpUpkOr7','Backstreet Boys'),

@@ -31,7 +31,6 @@ create table
 create table
     Participant (
         ID varchar (50) not null primary key,
-        LastName varchar (50) not null,
         FirstName varchar (50) not null,
         Description varchar (255)
     );

@@ -7,7 +7,7 @@ INSERT INTO public.participant(
 	('5417d64b-57f8-4189-aa46-1b9284c0aee1', 'Melo', null),
 	('2778f4d7-452b-4a85-a389-36a62f9da2a1', 'Bérenger', null),
 	('a360075d-f515-4572-b16f-a425b16b5a8a', 'Ash', null),
-	('908c791f-6f44-4783-a245-129db91f1740' 'Dodo', null),
+	('908c791f-6f44-4783-a245-129db91f1740', 'Dodo', null),
 	('f6ecd483-6f8b-481c-adcb-37327b568161', 'Bellou', null),
 	('d245c619-1bcb-4422-9b5e-058e2472ef48', 'Sam', null),
 	('2e0ab05f-cc89-42b3-b1f7-5487ad8684e5', 'Eliette', null),
