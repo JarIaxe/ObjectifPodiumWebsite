@@ -3,10 +3,12 @@ import json
 from config import load_config
 import requests
 
-def get_access_token(config):
-    global token
-    client_id = config["client_id"]
-    client_secret = config["client_secret"]
+def get_access_token():
+    global token, config_dict
+    config_dict = load_config("database.ini", "spotify")
+
+    client_id = config_dict["client_id"]
+    client_secret = config_dict["client_secret"]
 
     auth_string=f"{client_id}:{client_secret}"
     encoded_auth = base64.b64encode(auth_string.encode()).decode("utf-8")
@@ -25,12 +27,15 @@ def get_access_token(config):
         token = 'Bearer ' + response.json().get("access_token")
 
 
-def check_token_expired():
-    response = requests.post('url')
+def check_token_expired(func):
+    response = requests.post('https://api.spotify.com/v1/search?q=adele&type=track&limit=1')
 
     if response.status_code == 401:
-        get_access_token(config)
+        get_access_token()
 
+    return func
+
+@check_token_expired
 def get_song(title):
     endpoint = "https://api.spotify.com/v1/search"
 
@@ -45,7 +50,5 @@ def get_song(title):
 
 
 if __name__ == "__main__":
-    global config
-    config = load_config("database.ini", "spotify")
-    get_access_token(config)
-    get_song("Yellow")
+    get_song("Yellow Coldplay")
+    get_song("Que je t'aime")
