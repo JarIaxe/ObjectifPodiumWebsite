@@ -1,9 +1,11 @@
 from Class.song import Song
 from Class.artist import Artist
+from Services.sessionService import doesTodaySessionExists, GetTodaySession
 from config import load_config
 from connect import connect
 
 def songInsert(songData):
+    global idSession
     config = load_config(filename="database.ini", section='PostgreSQL')
     with connect(config) as conn:
         # print(songData)
@@ -23,6 +25,14 @@ def songInsert(songData):
 
             cur.execute(sqlVerif)
             result = cur.fetchone()
+
+            if not doesTodaySessionExists():
+                idSession = GetTodaySession(None)
+            
+            sqlSession = f"""INSERT INTO SONG_SESSION (id_song, id_session)
+                            values({idSession}, {song.id})"""
+            cur.execute(sqlSession)
+
             # Si pas présent en bd
             if (result[0] == 0):
                 sqlInsert = f"""INSERT INTO SONG (id, name, numberstream, nboccurence, imagealbum) 

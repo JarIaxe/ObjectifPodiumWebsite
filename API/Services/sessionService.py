@@ -20,7 +20,7 @@ def doesTodaySessionExists() -> bool:
             result = cur.fetchone()
             return result[0] == 0
 
-def GetTodaySession(themeBlindTest:str) -> str:
+def GetTodaySession(themeBlindTest:str = None) -> str:
     global idSession
     config = load_config(filename="database.ini", section='PostgreSQL')
     with connect(config) as conn:
