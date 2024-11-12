@@ -1,6 +1,7 @@
 import base64
 from config import load_config
 import requests
+from Services.songService import songExist
 
 def get_access_token():
     global token, config_dict
@@ -45,6 +46,9 @@ def get_song_from_title(title):
     response = requests.get(endpoint+"?"+search_request, headers=headers)
     if response.status_code == 200:
         data = response.json().get("tracks").get("items")
+        for i, song in enumerate(data):
+            result = songExist(song["id"])
+            data[i]['bd_num'] = result
         return data
 
 @check_token_expired

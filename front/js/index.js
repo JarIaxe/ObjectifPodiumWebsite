@@ -27,7 +27,13 @@ function updateResults(data) {
                 if (i != 0){ artists += ', ' }
                 artists += artist.name;
             });
-        $resultsList.append(`<li class="list-group-item">${item.name} - ${artists}</li>`);
+        $resultsList.append(`<li class="list-group-item d-flex justify-content-between align-items-center">
+            ${item.name} - ${artists}
+            <div class="d-flex align-items-center">
+            <span class="info-label me-2">${item.bd_num} occurences en BD</span><button class="btn btn-primary btn-sm action-btn" data-name="${item.id}">Enregistrer en BD</button>
+            </div>
+          </li>
+          `);
         });
     }
     }
@@ -61,4 +67,30 @@ $(document).ready(function() {
         updateResults([]);
       }
     });
+  });
+
+  // Écouter les clics sur les boutons avec la classe 'action-btn'
+  $('#resultsList').on('click', '.action-btn', function() {
+    const itemName = $(this).data('name'); // Récupérer le nom de l'item
+    
+    // Faire un appel API pour cet item
+    fetch(baseUrl + '/api/saveSong', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ id: itemName })
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Erreur de réseau');
+        }
+        return response.json();
+      })
+      .then(data => {
+        alert(`Action réalisée pour ${itemName} : ${data.message}`);
+      })
+      .catch(error => {
+        console.error('Erreur :', error);
+      });
   });
